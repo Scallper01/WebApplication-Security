@@ -11,6 +11,11 @@
           <package value="com.WebApp" />
         </packages>
       </persistence-unit>
+      <persistence-unit moduleName="WebApp-CasServer" name="Default">
+        <packages>
+          <package value="com.WebApp" />
+        </packages>
+      </persistence-unit>
     </persistence-units>
   </component>
 </project>
