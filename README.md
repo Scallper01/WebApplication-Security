@@ -1,7 +1,7 @@
 # WebApplication-Security
 Repo for learning projects of securing Web applications with major protocols 
 
-Stateless security
+Statefull security
 - Username and password security with a session
 - preventing CSRF exploit
 - Central Authentication Server (CAS)
