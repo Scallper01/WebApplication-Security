@@ -7,5 +7,5 @@ Statefull security
 - Central Authentication Server (CAS)
 
 Stateless security
-- JWT provided by a IdP Keyckloack
+- JWT provided by a IdP Keycloack
 - OAuth2 using Google authorization
