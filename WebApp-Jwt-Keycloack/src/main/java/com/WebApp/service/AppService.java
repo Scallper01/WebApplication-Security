@@ -17,7 +17,7 @@ import java.util.Optional;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class SecAppService {
+public class AppService {
     @Autowired
     private productRepository productRepository;
     @Autowired

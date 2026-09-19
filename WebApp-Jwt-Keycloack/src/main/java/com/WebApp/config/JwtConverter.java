@@ -18,13 +18,12 @@ public class JwtConverter implements Converter<Jwt, JwtAuthenticationToken> {
     @Override
     public JwtAuthenticationToken convert(Jwt jwt) {
 
-        Map<String, Map<String, ArrayList<String>>> realmAccess = (Map<String, Map<String, ArrayList<String>>>) jwt.getClaims().get("realm_access");
-
-        if (realmAccess == null || realmAccess.isEmpty()) {
+        Map<String, Object> resource_access = (Map<String, Object>) jwt.getClaims().get("resource_access");
+        Map<String, ArrayList<String>> applicationRoles = (Map<String, ArrayList<String>>) resource_access.get("SpringBoot-Backend-1");
+        ArrayList<String> roles = applicationRoles.get("roles");
+        if (roles == null || roles.isEmpty()) {
             return new JwtAuthenticationToken(jwt, List.of());
         }
-        ArrayList<String> roles = (ArrayList<String>) realmAccess.get("roles");
-
         Collection<SimpleGrantedAuthority> authorities =
                     roles.stream()
                             .map(role -> new SimpleGrantedAuthority("ROLE_" + role))

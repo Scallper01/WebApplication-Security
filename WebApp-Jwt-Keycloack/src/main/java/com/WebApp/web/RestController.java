@@ -1,7 +1,7 @@
 package com.WebApp.web;
 
 import com.WebApp.entities.Product;
-import com.WebApp.service.SecAppService;
+import com.WebApp.service.AppService;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@org.springframework.web.bind.annotation.RestController
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SecAppController {
+public class RestController {
     @Autowired
-    private SecAppService service;
+    private AppService service;
 
     @GetMapping(path = "/product")
-    @PreAuthorize("hasRole('USER')")
+    //@PreAuthorize("hasRole('USER')")
     public Optional<Product> getProductById(@RequestParam(name = "Id") Long id){
         return service.getProductById(id);
     }
@@ -32,14 +32,15 @@ public class SecAppController {
     }
 
     @PostMapping(path = "/product")
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     public Product addProduct(@RequestBody Product product){
         return service.addProduct(product);
     }
 
     @GetMapping("/debug/auth")
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     public Object auth(Authentication authentication) {
+
         return authentication.getAuthorities();
     }
 

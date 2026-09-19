@@ -18,8 +18,8 @@ public class Application {
 		logger.info("******* Application Context initialized successfully **********");
 		productRepository productRepository = context.getBean(productRepository.class);
 		Long p = productRepository.count();
-		logger.info("Numberr of Exiting products in DB : " +String.valueOf(p));
-		if(p==0){
+		logger.info("Number of Exiting products in DB : " +String.valueOf(p));
+		if(p.equals(0)){
 			productRepository.save(Product.builder().name("Laptop").quantity(10).build());
 			productRepository.save(Product.builder().name("Mousse").quantity(20).build());
 			productRepository.save(Product.builder().name("Keyboard").quantity(30).build());
