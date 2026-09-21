@@ -5,8 +5,6 @@ Statefull security
 - Username and password security with a session
 - preventing CSRF exploit
 - Central Authentication Server (CAS)
-- OAuth2 with Google
-- SAML
 
 Stateless security
 - JWT provided by a IdP Keycloack
