@@ -1,0 +1,9 @@
+postgres :
+db : keycloak_db;ecommerce_db
+keycloak_user;keycloak123!
+backend_user;spring123!
+
+keycloak:
+admin:admin
+
+melamal:1234

@@ -4,8 +4,11 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
+        <option value="$PROJECT_DIR$/WebApp-Oauth2/pom.xml" />
         <option value="$PROJECT_DIR$/WebApp-CASServer/pom.xml" />
-        <option value="$PROJECT_DIR$/WebApp-Jwt-Keycloack/pom.xml" />
+        <option value="$PROJECT_DIR$/WebApp-Jwt-Keycloak/pom.xml" />
+        <option value="$PROJECT_DIR$/WebApp-Jwt-Integrated/pom.xml" />
+        <option value="$PROJECT_DIR$/WebApp-Saml-Keycloak/pom.xml" />
       </list>
     </option>
   </component>

@@ -6,9 +6,7 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -19,24 +17,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(
             HttpSecurity http
     ) throws Exception {
-        http.
-                csrf(AbstractHttpConfigurer::disable)
+        http
                 .authorizeHttpRequests(auth -> auth
-                    .anyRequest().authenticated())
-                .formLogin(Customizer.withDefaults())
-                .oauth2Login(Customizer.withDefaults());
+                        // Allow public access to error, root, and SAML metadata endpoints
+                        .requestMatchers("/", "/error", "/saml2/**").permitAll()
+                        .anyRequest().authenticated()
+                )
+                .saml2Login(Customizer.withDefaults());
         return http.build();
-    }
 
-
-    @Bean
-    public UserDetailsService userDetailsService(){
-        return new InMemoryUserDetailsManager(
-                User.builder()
-                        .username("mohsine")
-                        .password("{noop}1234")
-                        .authorities("ROLE_USER")
-                        .build()
-        );
     }
 }

@@ -2,13 +2,10 @@ package com.WebApp.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -19,24 +16,15 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(
             HttpSecurity http
     ) throws Exception {
-        http.
-                csrf(AbstractHttpConfigurer::disable)
+        http
+                .csrf(AbstractHttpConfigurer::disable)
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                     .anyRequest().authenticated())
-                .formLogin(Customizer.withDefaults())
-                .oauth2Login(Customizer.withDefaults());
+                    .oauth2ResourceServer(oAuth2 ->
+                        oAuth2.jwt(jwt ->
+                                jwt.jwtAuthenticationConverter(new JwtConverter())));
         return http.build();
-    }
 
-
-    @Bean
-    public UserDetailsService userDetailsService(){
-        return new InMemoryUserDetailsManager(
-                User.builder()
-                        .username("mohsine")
-                        .password("{noop}1234")
-                        .authorities("ROLE_USER")
-                        .build()
-        );
     }
 }

@@ -2,36 +2,36 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="true" />
-      <profile name="Annotation profile for webApp-JWT-Keycloack" enabled="true">
+      <profile name="Annotation profile for webApp-JWT-Integrated" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+        </processorPath>
+        <module name="webApp-JWT-Integrated" />
+      </profile>
+      <profile name="Annotation profile for webApp-Saml-Keycloack" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
         </processorPath>
-        <module name="webApp-JWT-Keycloack" />
-      </profile>
-      <profile name="Annotation profile for webApp-CasServer" enabled="true">
-        <sourceOutputDir name="../WebApp-CasServer/target/generated-sources/annotations" />
-        <sourceTestOutputDir name="../WebApp-CasServer/target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
-        </processorPath>
-        <module name="WebApp-CasServer" />
+        <module name="webApp-Oauth2" />
+        <module name="webApp-CASServer" />
+        <module name="webApp-Saml-Keycloak" />
+        <module name="webApp-JWT-Keycloak" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="WebApp-Jwt-Keycloack" target="21" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="WebApp-CasServer" options="-parameters" />
-      <module name="WebApp-Jwt-Keycloack" options="-parameters" />
-      <module name="webApp-JWT-Keycloack" options="-parameters" />
+      <module name="webApp-CASServer" options="-parameters" />
+      <module name="webApp-JWT-Integrated" options="-parameters" />
+      <module name="webApp-JWT-Keycloak" options="-parameters" />
+      <module name="webApp-Oauth2" options="-parameters" />
+      <module name="webApp-Saml-Keycloak" options="-parameters" />
     </option>
   </component>
 </project>
